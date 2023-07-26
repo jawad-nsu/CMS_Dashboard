@@ -45,7 +45,10 @@ export const StoreModal = () => {
       const res = await postStore(values);
 
       console.log(res.data);
-      toast.success('Store Created!');
+
+      //use window instead of router to the refresh page
+      window.location.assign(`/${res.data.id}`);
+
       return res.data;
     } catch (err) {
       setLoading(false);
@@ -94,7 +97,7 @@ export const StoreModal = () => {
                 >
                   Cancel
                 </Button>
-                <Button disabled={loading} n type='submit'>
+                <Button disabled={loading} type='submit'>
                   Continue
                 </Button>
               </div>
